@@ -1,1 +1,3 @@
-Google Maps exploration. Uses geolocation API to recentre the map to the location of the user's choice. 
+Google Maps exploration. Uses geolocation API to recentre the map to the location of the user's choice.
+
+Ties an infowindow to a marker to allow a different infowindow for every pin that is dropped and uses a differnt letter to label every pin (restarting at A after reaching Z).

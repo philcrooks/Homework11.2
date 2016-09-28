@@ -1,9 +1,9 @@
-function Pin (map, coords, title) {
+function Pin (map, coords, title, label) {
   this.marker = new google.maps.Marker({
     position: coords,
     map: map,
-    title: title
-    // label: "A"
+    title: title,
+    label: label
   });
   this.infowindow = new google.maps.InfoWindow({
     content: "<h2>This is " + title + "</h2>"
@@ -24,7 +24,8 @@ Map.prototype.addMarker = function(coords, title) {
   // marker.addListener('click', function() {
   //   this.infowindow.open(this.googleMap, marker);
   // }.bind(this));
-  var marker = new Pin(this.googleMap, coords, title);
+  var label = String.fromCharCode('A'.charCodeAt() + (this.labelCounter++ % 26));
+  var marker = new Pin(this.googleMap, coords, title, label);
 }
 
 Map.prototype.geocodeAddress = function(geocoder, address) {
@@ -43,7 +44,8 @@ function Map (container, coords, zoom) {
     center: coords,
     zoom: zoom
   });
-  this.infowindow = new google.maps.InfoWindow();
+  this.labelCounter = 0;
+  // this.infowindow = new google.maps.InfoWindow();
 
   // this.addClickEvent = function() {
   //   google.maps.event.addListener(this.googleMap, 'click',
